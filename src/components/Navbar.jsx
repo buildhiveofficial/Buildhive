@@ -1,20 +1,19 @@
 "use client"
-import { Home, MenuIcon, X } from 'lucide-react'
+import { Home, MenuIcon, X,User,  Briefcase,  Folder, TrendingUp, Users } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
-  const links = [
-    { to: "/", label: "Home", icon: <Home className='h-5 w-5' /> },
-    { to: "/about", label: "About", icon: <Home className='h-5 w-5' /> },
-    { to: "/services", label: "Services", icon: <Home className='h-5 w-5' /> },
-    { to: "/projects", label: "Projects", icon: <Home className='h-5 w-5' /> },
-    { to: "/grow", label: "Grow", icon: <Home className='h-5 w-5' /> },
-    { to: "/team", label: "Team", icon: <Home className='h-5 w-5' /> },
-  ]
-
+const links = [
+  { to: "/", label: "Home", icon: <Home className="h-5 w-5" /> },
+  { to: "/about", label: "About", icon: <User className="h-5 w-5" /> },
+  { to: "/services", label: "Services", icon: <Briefcase className="h-5 w-5" /> },
+  { to: "/projects", label: "Projects", icon: <Folder className="h-5 w-5" /> },
+  { to: "/grow", label: "Grow", icon: <TrendingUp className="h-5 w-5" /> },
+  { to: "/team", label: "Team", icon: <Users className="h-5 w-5" /> },
+];
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
