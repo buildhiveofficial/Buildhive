@@ -11,7 +11,7 @@ const Footer = () => (
         <div>
           <div className="mb-4 flex items-center gap-2">
             <Link href={"/"}>
-            <img src="/logo/logo.png" className='md:w-52 w-32' alt="logo" />
+            <img src="/logo/Logo.png" className='md:w-52 w-32' alt="logo" />
             </Link>
           </div>
           <p className="text-sm leading-relaxed text-white">

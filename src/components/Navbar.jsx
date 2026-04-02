@@ -25,7 +25,7 @@ const Navbar = () => {
       {/* Desktop Navbar */}
       <div className='bg-black text-white flex items-center justify-between px-6 md:px-16 py-3 fixed top-0 w-full z-50 shadow-lg'>
         <Link href={"/"}>
-        <img src="/logo/logo.png" className='md:w-52 w-32' alt="logo" />
+        <img src="/logo/Logo.png" className='md:w-52 w-32' alt="logo" />
         </Link>
         <div className='hidden md:flex items-center gap-6'>
           {links.map((link, i) => (
@@ -72,7 +72,7 @@ const Navbar = () => {
           >
             <div>
                <Link href={"/"} onClick={() => setOpen(false)}>
-                     <div className='px-4 -mt-1'> <img src="/logo/logo.png" className=' w-32' alt="logo" /></div>
+                     <div className='px-4 -mt-1'> <img src="/logo/Logo.png" className=' w-32' alt="logo" /></div>
         </Link>
             <div className='flex flex-col gap-4 mt-8'>
               {links.map((link, i) => (
