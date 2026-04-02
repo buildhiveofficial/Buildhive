@@ -95,7 +95,7 @@ const links = [
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className=' text-black font-semibold py-2 px-6  mb-5'
+              className=' text-black font-semibold py-2 px-6  mb-7'
             >
              <button className="cursor-pointer font-semibold overflow-hidden relative z-100 border border-theme group px-8 py-2 rounded-lg">
   <span className="relative z-10 text-theme group-hover:text-white text-xl duration-500">CONTACT</span>
