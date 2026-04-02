@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme inline{
+  --color-theme :#f24e12
+}
