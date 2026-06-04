@@ -1,4 +1,5 @@
 import ContactPage from '@/components/Contact'
+import WhatsAppChannel from '@/components/whatsappGroup'
 import React from 'react'
 
 const page = () => {
@@ -10,6 +11,7 @@ const page = () => {
   content="Contact Build Hive for expert construction and architectural services. Get in touch with our team for project inquiries, consultations, and reliable building solutions."
 />
       <ContactPage/>
+      <WhatsAppChannel/>
     </>
   )
 }

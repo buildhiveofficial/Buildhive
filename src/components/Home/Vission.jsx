@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
-import AnimatedSection from './Animated'
+import AnimatedSection from '../Animated'
 import { motion } from 'framer-motion'
-import Button from './Button'
+import Button from '../Button'
 
 const Vission = () => {
   return (

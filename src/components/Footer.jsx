@@ -11,7 +11,7 @@ const Footer = () => (
         <div>
           <div className="mb-4 flex items-center gap-2">
             <Link href={"/"}>
-            <img src="/logo/Logo.png" className='md:w-52 w-32' alt="logo" />
+            <img src="/logo/Logo.png" className='md:w-44 w-32' alt="logo" />
             </Link>
           </div>
           <p className="text-sm leading-relaxed text-white">
@@ -82,7 +82,7 @@ const Footer = () => (
     © 2026 <span className="text-theme font-semibold">BuildHive</span>. All rights reserved.
   </div>
     {/* Developer Info */}
-            <div className=" text-xs text-white  md:w-40 text-center">
+            {/* <div className=" text-xs text-white  md:w-40 text-center">
               Developed by{" "}
               <a
                 href="https://mudassar-rana.vercel.app" 
@@ -108,7 +108,7 @@ const Footer = () => (
               >
                 0300 7298222
               </a>
-            </div>
+            </div> */}
 
   {/* Spacer for alignment */}
   {/* <div className="hidden md:block w-30" /> */}

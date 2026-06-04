@@ -1,44 +1,115 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon, Star } from "lucide-react";
 // import { Rating } from "primereact/rating";
 import AnimatedText from "./AnimatedText";
 import Avatar from "./Avatar";
 
-const cards = [
-  {
-    name: "Muhammad Ahmad",
-    content:
-      "Build Hive transformed our dream home into reality with exceptional craftsmanship and attention to detail. Their team handled everything professionally, from planning to execution, and delivered beyond our expectations.",
-  },
-  {
-    name: "Azeem Shah",
-    content:
-      "Working with Build Hive was a seamless experience. Their architectural designs were modern and practical, and the construction quality was outstanding. Highly recommended for anyone looking for reliable builders.",
-  },
-  {
-    name: "Syed Ahmad",
-    content:
-      "Build Hive provided us with innovative design solutions and flawless construction services. Their expertise, transparency, and commitment to deadlines made the entire project stress-free.",
-  },
-  {
-    name: "Muhammad Nouman",
-    content:
-      "The team at Build Hive delivered our commercial project with precision and professionalism. Their attention to quality and timely completion truly sets them apart in the construction industry.",
-  },
-  {
-    name: "Safdar Ali",
-    content:
-      "Build Hive exceeded our expectations with their dedication and work ethic. From initial consultation to final handover, everything was handled smoothly. Highly professional and trustworthy team!",
-  },
-];
-const text1 = [
-  { word: "Client", className: " text-theme" },
-  { word: "testimonials", className: "text-black" },
-];
+const testimonials = {
+  design: [
+    {
+      name: "Ahmed Khan",
+      content:
+        "BuildHive transformed our vision into a stunning architectural masterpiece. Their design team delivered creativity and functionality beyond expectations.",
+    },
+    {
+      name: "Ali Raza",
+      content:
+        "The interior architecture and planning process was seamless. Every detail reflected professionalism and innovation.",
+    },
+    {
+      name: "Usman Tariq",
+      content:
+        "Exceptional residential design services. The final concept perfectly balanced aesthetics and practicality.",
+    },
+    {
+      name: "Hassan Ali",
+      content:
+        "Their landscape and urban planning solutions added tremendous value to our development project.",
+    },
+    {
+      name: "Bilal Ahmed",
+      content:
+        "BuildHive's architecture team delivered exactly what we imagined with outstanding attention to detail.",
+    },
+  ],
 
-export default function Cards() {
+  build: [
+    {
+      name: "Muhammad Ahmad",
+      content:
+        "Build Hive transformed our dream home into reality with exceptional craftsmanship and attention to detail.",
+    },
+    {
+      name: "Azeem Shah",
+      content:
+        "Working with Build Hive was a seamless experience. Their construction quality was outstanding.",
+    },
+    {
+      name: "Syed Ahmad",
+      content:
+        "Build Hive provided us with innovative construction solutions and flawless execution.",
+    },
+    {
+      name: "Muhammad Nouman",
+      content:
+        "The team delivered our commercial project with precision and professionalism.",
+    },
+    {
+      name: "Safdar Ali",
+      content:
+        "From consultation to final handover, everything was handled smoothly and professionally.",
+    },
+  ],
+
+  grow: [
+    {
+      name: "Hassan Digital",
+      content:
+        "Our online presence doubled within months thanks to BuildHive's branding and marketing team.",
+    },
+    {
+      name: "Bilal Agency",
+      content:
+        "The AI content strategy helped us generate more leads than ever before.",
+    },
+    {
+      name: "Saqib Malik",
+      content:
+        "BuildHive completely transformed our brand identity and website experience.",
+    },
+    {
+      name: "Muneeb Khan",
+      content:
+        "SEO and advertising campaigns delivered measurable growth and consistent results.",
+    },
+    {
+      name: "Adeel Ahmed",
+      content:
+        "Their AI-powered content creation gave our business a significant competitive advantage.",
+    },
+  ],
+};
+const headings = {
+  design: [
+    { word: "Design", className: "text-theme" },
+    { word: "Testimonials", className: "text-black" },
+  ],
+
+  build: [
+    { word: "Build", className: "text-theme" },
+    { word: "Testimonials", className: "text-black" },
+  ],
+
+  grow: [
+    { word: "Grow", className: "text-theme" },
+    { word: "Testimonials", className: "text-black" },
+  ],
+};
+
+export default function Cards({ activePillar }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const cards = testimonials[activePillar] || testimonials.design;
 
   const nextCard = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
@@ -49,12 +120,20 @@ export default function Cards() {
       (prevIndex) => (prevIndex - 1 + cards.length) % cards.length
     );
   };
+  useEffect(() => {
+  setCurrentIndex(0);
+}, [activePillar]);
+const currentHeading =
+  headings[activePillar] || headings.design;
 
   return (
     <>
       {/* text-------------- */}
       <div className="w-[90%] lg:w-[70%] mx-auto flex flex-col gap-10 md:my-10 my-8 ">
-        <AnimatedText text={text1} classname={"text-white"} />
+  <AnimatedText
+  text={currentHeading}
+  classname={"text-white"}
+/>
         <p className="text-[#979f90] text-sm lg:text-xl text-center">
           Real results. Real clients. Here’s what people say after working with
           me — because actions speak louder than promises.
@@ -86,7 +165,7 @@ export default function Cards() {
           ))}
         </div>
         {/* cards--------------- */}
-        <div className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[45%] sm:mx-auto h-[300px] md:h-[500px]">
+        <div className="relative w-[90%] sm:w-[80%] md:w-[60%] lg:w-[40%] sm:mx-auto h-[300px] md:h-[420px]">
           {cards.map((card, index) => {
             const offset = (index - currentIndex + cards.length) % cards.length;
             return (
