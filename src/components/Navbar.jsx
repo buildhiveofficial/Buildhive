@@ -19,26 +19,26 @@ const Navbar = () => {
   const links = [
     { to: "/", label: "Home", icon: <Home className="h-5 w-5" /> },
     { to: "/about", label: "About", icon: <User className="h-5 w-5" /> },
-    {
-      to: "/services",
-      label: "Services",
-      icon: <Briefcase className="h-5 w-5" />,
-    },
+    // {
+    //   to: "/services",
+    //   label: "Services",
+    //   icon: <Briefcase className="h-5 w-5" />,
+    // },
     {
       to: "/projects",
       label: "Projects",
       icon: <Folder className="h-5 w-5" />,
     },
-    {
-      to: "/team",
-      label: "Team",
-      icon: <Users className="h-5 w-5" />,
-    },
-    {
-      to: "/consultancy",
-      label: "Consultancy",
-      icon: <CircleUser className="h-5 w-5" />,
-    },
+    // {
+    //   to: "/team",
+    //   label: "Team",
+    //   icon: <Users className="h-5 w-5" />,
+    // },
+    // {
+    //   to: "/consultancy",
+    //   label: "Consultancy",
+    //   icon: <CircleUser className="h-5 w-5" />,
+    // },
   ];
 
   const pathname = usePathname();
@@ -59,7 +59,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6">
+        <div className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-10">
           {links.map((link, i) => (
             <Link
               key={i}

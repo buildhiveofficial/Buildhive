@@ -1,50 +1,90 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const services = {
   design: {
     heading: "Architecture & Design Excellence",
     text: "Creative spaces engineered for functionality, sustainability and timeless beauty.",
+
     items: [
-      "Residential Architecture",
-      "Commercial Architecture",
-      "Industrial Architecture",
-      "Landscape Architecture",
-      "Interior Architecture",
-      "Urban Design",
-      "Green Design",
-      "Master Planning",
+      {
+        name: "ARCHITECTURAL DESIGN",
+        image: "/design/ARCHITECTURAL DESIGN/1.jpg",
+      },
+      {
+        name: "GREEN & SUSTIANABLE DESIGN",
+        image: "/design/GREEN & SUSTIANABLE DESIGN/1.jpg",
+      },
+      {
+        name: "INTERIOR DESIGN",
+        image: "/design/INTERIOR DESIGN/1.jfif",
+      },
+      {
+        name: "PRODUCT & INDUSTRIAL DESIGN",
+        image: "/design/PRODUCT & INDUSTRIAL DESIGN/1.jfif",
+      },
+      {
+        name: "URBAN DESIGN",
+        image: "/design/URBAN DESIGN/1.jpg",
+      },
     ],
   },
 
   build: {
     heading: "Construction & Project Delivery",
-    text: "From blueprint to reality with precision, quality control and expert project management.",
+    text: "From blueprint to reality with precision and quality.",
+
     items: [
-      "Luxury Villas",
-      "Residential Construction",
-      "Commercial Buildings",
-      "Industrial Facilities",
-      "Renovation & Remodeling",
-      "Civil Works",
-      "Electrical Works",
-      "HVAC & Plumbing",
+      {
+        name: "COMMERCIAL CONSTRUCTION",
+        image: "/build/COMMERCIAL CONSTRUCTION/1.jpg",
+      },
+      {
+        name: "CONTRACTOR & SPECIALIST SERVICES",
+        image: "/build/CONTRACTOR & SPECIALIST SERVICES/1.jfif",
+      },
+      {
+        name: "PROJECT MANAGEMENT",
+        image: "/build/PROJECT MANAGEMENT/1.jfif",
+      },
+      {
+        name: "RENOVATION & REMOLDING",
+        image: "/build/RENOVATION & REMOLDING/1.jfif",
+      },
+      {
+        name: "RESIDENTIAL CONSTRUCTION",
+        image: "/build/RESIDENTIAL CONSTRUCTION/1.jfif",
+      },
     ],
   },
 
   grow: {
     heading: "Marketing, Branding & AI Growth",
-    text: "Transform your business into a digital powerhouse with AI-powered marketing systems.",
+    text: "AI-powered marketing systems for modern businesses.",
+
     items: [
-      "Brand Identity",
-      "Logo Design",
-      "Website Development",
-      "SEO",
-      "Google Ads",
-      "Meta Ads",
-      "AI Avatars",
-      "Faceless Content",
+      {
+        name: "Brand Identity",
+        image: "/services/grow-1.jpg",
+      },
+      {
+        name: "Website Development",
+        image: "/services/grow-2.jpg",
+      },
+      {
+        name: "SEO",
+        image: "/services/grow-3.jpg",
+      },
+      {
+        name: "Google Ads",
+        image: "/services/grow-4.jpg",
+      },
+      {
+        name: "AI Content",
+        image: "/services/grow-5.jpg",
+      },
     ],
   },
 };
@@ -72,26 +112,51 @@ export default function Services({ activePillar }) {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16 lg:mt-20">
-          {data.items.map((item, index) => (
-            <motion.div
-              key={item}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              viewport={{ once: true }}
-              className="p-5 md:p-6 lg:p-8 rounded-2xl border border-black/10 hover:border-theme hover:-translate-y-2 transition-all duration-300 bg-white"
-            >
-              <div className="text-theme text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
-                {String(index + 1).padStart(2, "0")}
-              </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-16">
+  {data.items.map((item, index) => (
+    <motion.div
+      key={item.name}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.08 }}
+      viewport={{ once: true }}
+      className="group overflow-hidden rounded-3xl border border-black/10 bg-white hover:shadow-2xl transition-all duration-500"
+    >
+      {/* Image */}
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={item.image}
+          alt={item.name}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+        />
 
-              <h3 className="font-semibold text-lg md:text-xl leading-snug">
-                {item}
-              </h3>
-            </motion.div>
-          ))}
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-4">
+          {item.name}
+        </h3>
+
+
+<Link
+  href={`/projects?pillar=${activePillar}&category=${encodeURIComponent(
+    item.name
+  )}`}
+  className="inline-flex items-center gap-2 text-theme font-semibold mt-4 group/link"
+>
+  Explore
+
+  <span className="transition-all duration-300 group-hover/link:translate-x-2">
+    →
+  </span>
+</Link>
+      </div>
+    </motion.div>
+  ))}
+</div>
 
       </div>
     </section>

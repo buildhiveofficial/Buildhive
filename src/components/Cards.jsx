@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon, Star } from "lucide-react";
-// import { Rating } from "primereact/rating";
+import React from "react";
+import { Star } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 import Avatar from "./Avatar";
 
@@ -90,17 +89,16 @@ const testimonials = {
     },
   ],
 };
+
 const headings = {
   design: [
     { word: "Design", className: "text-theme" },
     { word: "Testimonials", className: "text-black" },
   ],
-
   build: [
     { word: "Build", className: "text-theme" },
     { word: "Testimonials", className: "text-black" },
   ],
-
   grow: [
     { word: "Grow", className: "text-theme" },
     { word: "Testimonials", className: "text-black" },
@@ -108,148 +106,55 @@ const headings = {
 };
 
 export default function Cards({ activePillar }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const cards = testimonials[activePillar] || testimonials.design;
-
-  const nextCard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
-  };
-
-  const prevCard = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + cards.length) % cards.length
-    );
-  };
-  useEffect(() => {
-  setCurrentIndex(0);
-}, [activePillar]);
-const currentHeading =
-  headings[activePillar] || headings.design;
+  const currentHeading = headings[activePillar] || headings.design;
 
   return (
     <>
-      {/* text-------------- */}
-      <div className="w-[90%] lg:w-[70%] mx-auto flex flex-col gap-10 md:my-10 my-8 ">
-  <AnimatedText
-  text={currentHeading}
-  classname={"text-white"}
-/>
+      <div className="w-[90%] lg:w-[70%] mx-auto flex flex-col gap-10 my-10">
+        <AnimatedText
+          text={currentHeading}
+          classname={"text-white"}
+        />
+
         <p className="text-[#979f90] text-sm lg:text-xl text-center">
           Real results. Real clients. Here’s what people say after working with
-          me — because actions speak louder than promises.
+          us — because actions speak louder than promises.
         </p>
       </div>
-      <div className="relative pl-2 sm:pl-0 overflow-hidden ">
-        {/* upworkleft----------------- */}
-        <div className="absolute top-0 left-40 hidden lg:block">
-          {["B", "U", "I", "L", "D"].map((letter, index) => (
-            <div
-              key={index}
-              className="text-7xl font-extrabold text-transparent my-2 relative"
-              style={{
-                textShadow:
-                  "-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff",
-              }}
-            >
-              {letter}
-              <div
-                className="absolute inset-0 text-transparent"
-                style={{
-                  textShadow: "none",
-                  WebkitTextStroke: "2px #f14e11",
-                }}
-              >
-                {letter}
-              </div>
-            </div>
-          ))}
-        </div>
-        {/* cards--------------- */}
-        <div className="relative w-[90%] sm:w-[80%] md:w-[60%] lg:w-[40%] sm:mx-auto h-[300px] md:h-[420px]">
-          {cards.map((card, index) => {
-            const offset = (index - currentIndex + cards.length) % cards.length;
-            return (
-              <div
-                key={index}
-                className={`absolute w-full h-full transition-all duration-300 ease-in-out rounded-3xl overflow-hidden shadow-lg  bg-black p-5 md:p-9 lg:p-11`}
-                style={{
-                  transform: `translateX(${offset * 10}%) scale(${
-                    1 - Math.abs(offset) * 0.1
-                  })`,
-                  zIndex: cards.length - Math.abs(offset),
-                  opacity: 1 - Math.abs(offset) * 0.3,
-                }}
-              >
-                <div className="flex mt-1 gap-5 items-center justify-center">
-                  <div className=" border-2 overflow-hidden rounded-full border-theme w-14 h-14">
-                    <Avatar name={card.name} />
-                  </div>
-                  <p className="text-theme font-bold text-lg md:text-3xl lg:text-3xl xl:text-4xl">
-                    {card.name}
-                  </p>
-                </div>
-                <p className="text-white mt-3 text-center text-xs md:text-left md:text-xl  xl:text-3xl md:mt-6 flex flex-col items-center">
-                  {card.content}
-                </p>
 
-                   <div className="flex absolute top-5 right-3 gap-1">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          size={15}
-          className={
-            i < 5
-              ? "fill-theme text-theme"
-              : "text-gray-400"
-          }
-        />
-      ))}
-    </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="absolute top-0 right-40 hidden lg:block">
-          {["H","I","V","E"].map((letter, index) => (
+      <div className="w-[90%] max-w-7xl mx-auto">
+        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+          {cards.map((card, index) => (
             <div
               key={index}
-              className="text-7xl font-extrabold text-transparent my-2 relative"
-              style={{
-                textShadow:
-                  "-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff",
-              }}
+              className="relative bg-black rounded-3xl p-8 border border-zinc-800 hover:border-theme transition-all duration-300 hover:-translate-y-2"
             >
-              {letter}
-              <div
-                className="absolute inset-0 text-transparent"
-                style={{
-                  textShadow: "none",
-                  WebkitTextStroke: "2px #f14e11",
-                }}
-              >
-                {letter}
+              <div className="absolute top-6 right-6 flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={16}
+                    className="fill-theme text-theme"
+                  />
+                ))}
               </div>
+
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-theme">
+                  <Avatar name={card.name} />
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-bold text-theme">
+                  {card.name}
+                </h3>
+              </div>
+
+              <p className="text-gray-300 leading-7 text-base md:text-lg">
+                {card.content}
+              </p>
             </div>
           ))}
-        </div>
-        {/* button------------------ */}
-        <div className=" justify-center gap-11 flex my-10 text-white">
-          <button
-            variant="outline"
-            size="icon"
-            className="bg-theme bg-opacity-50 hover:bg-opacity-75 transition-opacity rounded-lg"
-            onClick={prevCard}
-          >
-            <ChevronLeftIcon className="size-6 md:size-9" />
-          </button>
-          <button
-            variant="outline"
-            size="icon"
-            className="bg-theme bg-opacity-50 hover:bg-opacity-75 transition-opacity rounded-lg"
-            onClick={nextCard}
-          >
-            <ChevronRightIcon className="size-6 md:size-9" />
-          </button>
         </div>
       </div>
     </>
